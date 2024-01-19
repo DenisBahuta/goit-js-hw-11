@@ -7,22 +7,24 @@
     <title>Homework 11</title>
     
     <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-b41a7778.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-46aac873.js">
     <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-eb6030bc.css">
-    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-40b40342.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-69a1d6a2.css">
   </head>
   <body>
-    <form id="search-form">
-      <label for="search-input"></label>
-      <input
-        type="text"
-        id="search-input"
-        name="search"
-        placeholder="Search images..."
-        required
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div class="enter-title">
+      <form class="search" id="search-form">
+        <label for="search-input"></label>
+        <input
+          type="text"
+          id="search-input"
+          name="search"
+          placeholder="Search images..."
+          required
+        />
+        <button class="button-search-form" type="submit">Search</button>
+      </form>
+    </div>
 
     <ul class="gallery"></ul>
 
