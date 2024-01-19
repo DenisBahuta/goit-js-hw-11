@@ -17,12 +17,13 @@ function searchImages(query) {
   const BASE_URL = 'https://pixabay.com/api';
   const API_KEY = '41838546-9d950a50e841202e6c289d2dd';
 
-  const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=12`;
-
-  loader.classList.add('show');
+  const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=9`;
 
   fetch(url)
     .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       return response.json();
     })
     .then(function (data) {
@@ -58,11 +59,32 @@ function searchImages(query) {
         });
 
         lightbox.refresh();
-      }
 
-      loader.classList.remove('show');
+        page++;
+      }
     })
     .catch(function (error) {
+      iziToast.show({
+        title: 'Error',
+        message:
+          'Sorry, there was an error processing your request. Please try again later!',
+        theme: 'dark',
+        position: 'topCenter',
+        timeout: 3000,
+      });
       console.log(error);
+    })
+    .finally(function () {
+      loader.classList.remove('show');
     });
 }
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  searchQuery = input.value.trim();
+  if (searchQuery !== '') {
+    loader.classList.add('show');
+    searchImages(searchQuery);
+    form.reset();
+  }
+});

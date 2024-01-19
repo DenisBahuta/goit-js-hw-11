@@ -300,3 +300,37 @@ button:active {
     transform: rotate(360deg);
   }
 }
+.enter-title {
+  display: flex;
+  width: 1440px;
+  height: 496px;
+  padding: 36px 0px 420px 0px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+.search {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 272px;
+  height: 40px;
+  border-radius: 4px;
+  background: #fff;
+}
+.button-search-form {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #4e75ff;
+}
+.button-search-form:hover {
+  background: #6c8cff;
+}
+
+.button-search-form:active {
+  background: #4e75ff;
+}
