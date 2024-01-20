@@ -19,6 +19,8 @@ function searchImages(query) {
 
   const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=9`;
 
+  loader.classList.add('show');
+
   fetch(url)
     .then(function (response) {
       if (!response.ok) {
@@ -83,7 +85,6 @@ form.addEventListener('submit', function (event) {
   event.preventDefault();
   searchQuery = input.value.trim();
   if (searchQuery !== '') {
-    loader.classList.add('show');
     searchImages(searchQuery);
     form.reset();
   }
