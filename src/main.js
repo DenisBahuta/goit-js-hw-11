@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const form = document.querySelector('.search-form');
+const form = document.querySelector('#search-form');
 const input = document.querySelector('.search-input');
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
