@@ -2,30 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 11</title>
+    <title>goit-js-hw-11</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <div class="enter-title">
-      <form class="search" id="search-form">
-        <label for="search-input"></label>
-        <input
-          type="text"
-          id="search-input"
-          name="search"
-          class="search-input"
-          placeholder="Search images..."
-          required
-        />
-        <button class="button-search-form" type="submit">Search</button>
-      </form>
-    </div>
+    <form class="form">
+      <input
+        type="text"
+        class="input"
+        name="input"
+        placeholder="Search images..."
+      />
+      <button type="submit" class="search-btn">Search</button>
+    </form>
 
     <ul class="gallery"></ul>
 
-    <div class="loader"></div>
+    <p class="preload is-hidden">Loading images, please wait ...</p>
 
     <script src="./main.js" type="module"></script>
   </body>
