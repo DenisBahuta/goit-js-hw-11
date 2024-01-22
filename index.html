@@ -2,34 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework 11</title>
     
     <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-46aac873.js">
     <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-eb6030bc.css">
-    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-69a1d6a2.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-6a744946.css">
   </head>
   <body>
-    <div class="enter-title">
-      <form class="search" id="search-form">
-        <label for="search-input"></label>
-        <input
-          type="text"
-          id="search-input"
-          name="search"
-          class="search-input"
-          placeholder="Search images..."
-          required
-        />
-        <button class="button-search-form" type="submit">Search</button>
-      </form>
-    </div>
+    <form class="form">
+      <input
+        type="text"
+        class="input"
+        name="input"
+        placeholder="Search images..."
+      />
+      <button type="submit" class="search-btn">Search</button>
+    </form>
 
     <ul class="gallery"></ul>
 
     <div class="loader"></div>
+
+    <p class="preload is-hidden">Loading images, please wait ...</p>
 
     
   </body>
