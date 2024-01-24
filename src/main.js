@@ -25,7 +25,7 @@ function handleSearch(event) {
     iziToast.show({
       title: '❕',
       theme: 'light',
-      message: `Please, fill in the search field`,
+      message: 'Please, fill in the search field',
       messageSize: '20px',
       messageColor: '#808080',
       backgroundColor: '#e7fc44',
@@ -37,7 +37,15 @@ function handleSearch(event) {
 
   preload.classList.remove('is-hidden');
 
-  fetchImages(searchQuery)
+  const searchParams = new URLSearchParams({
+    key: '41838546-9d950a50e841202e6c289d2dd',
+    q: searchQuery,
+    image_type: 'photo',
+    orientation: 'horizontal',
+    safesearch: 'true',
+  });
+
+  fetchImages(searchParams)
     .then(data => {
       if (data.hits.length === 0) {
         iziToast.show({
@@ -55,28 +63,24 @@ function handleSearch(event) {
       imageList.innerHTML = createMarkup(data.hits);
       gallery.refresh();
     })
-    .catch(handleError)
-    .finally(() => preload.classList.add('is-hidden'));
-
-  event.currentTarget.reset();
+    .catch(error => {
+      console.error(error);
+      handleError();
+    })
+    .finally(() => {
+      preload.classList.add('is-hidden');
+      event.currentTarget.reset();
+    });
 }
 
-function fetchImages(value) {
+function fetchImages(searchParams) {
   const BASE_URL = 'https://pixabay.com/api';
 
-  const searchParams = new URLSearchParams({
-    key: '41838546-9d950a50e841202e6c289d2dd',
-    q: value,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: 'true',
-  });
-
-  return fetch(`${BASE_URL}/?${searchParams}`).then(res => {
-    if (!res.ok) {
-      throw new Error(res.status);
+  return fetch(`${BASE_URL}/?${searchParams}`).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
     }
-    return res.json();
+    return response.json();
   });
 }
 
@@ -93,32 +97,25 @@ function createMarkup(arr) {
         downloads,
       }) =>
         `<li class="gallery-item">
-        <a class="gallery-link" href="${largeImageURL}">
-           <img
-            class="gallery-image"
-            src="${webformatURL}"
-            alt="${tags}"
-          />
-        </a>
-        <div class="container-additional-info">
-        <div class="container-descr-inner"><p class="description">Likes</p><span class="description-value">${likes}</span></div>
-        
-        <div class="container-descr-inner"><p class="description">Views</p><span class="description-value">${views}</span></div>
-        
-
-        <div class="container-descr-inner"><p class="description">Comments</p><span class="description-value">${comments}</span></div>
-        
-
-        <div class="container-descr-inner"><p class="description">Downloads</p><span class="description-value">${downloads}</span></div>
-        
-        </div>
-      </li>`
+          <a class="gallery-link" href="${largeImageURL}">
+            <img
+              class="gallery-image"
+              src="${webformatURL}"
+              alt="${tags}"
+            />
+          </a>
+          <div class="container-additional-info">
+            <div class="container-descr-inner"><p class="description">Likes</p><span class="description-value">${likes}</span></div>
+            <div class="container-descr-inner"><p class="description">Views</p><span class="description-value">${views}</span></div>
+            <div class="container-descr-inner"><p class="description">Comments</p><span class="description-value">${comments}</span></div>
+            <div class="container-descr-inner"><p class="description">Downloads</p><span class="description-value">${downloads}</span></div>
+          </div>
+        </li>`
     )
     .join('');
 }
 
-function handleError(err) {
-  console.error(err);
+function handleError() {
   imageList.innerHTML = '';
   iziToast.show({
     iconUrl: icon,
