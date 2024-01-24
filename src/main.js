@@ -35,7 +35,7 @@ function handleSearch(event) {
     return;
   }
 
-  preload.classList.remove('is-hidden');
+  showLoader(); // показываем лоадер
 
   const searchParams = new URLSearchParams({
     key: '41838546-9d950a50e841202e6c289d2dd',
@@ -68,7 +68,7 @@ function handleSearch(event) {
       handleError();
     })
     .finally(() => {
-      preload.classList.add('is-hidden');
+      hideLoader(); // скрываем лоадер
       event.currentTarget.reset();
     });
 }
@@ -127,4 +127,12 @@ function handleError() {
     position: 'center',
     timeout: 5000,
   });
+}
+
+function showLoader() {
+  preload.classList.remove('is-hidden');
+}
+
+function hideLoader() {
+  preload.classList.add('is-hidden');
 }
