@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const formSearch = document.querySelector('.form');
 const imageList = document.querySelector('.gallery');
-const preload = document.querySelector('.preload');
+const loader = document.querySelector('.loader');
 
 const gallery = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -35,7 +35,7 @@ function handleSearch(event) {
     return;
   }
 
-  showLoader(); // показываем лоадер
+  showLoader();
 
   const searchParams = new URLSearchParams({
     key: '41838546-9d950a50e841202e6c289d2dd',
@@ -68,7 +68,7 @@ function handleSearch(event) {
       handleError();
     })
     .finally(() => {
-      hideLoader(); // скрываем лоадер
+      hideLoader();
       event.currentTarget.reset();
     });
 }
@@ -130,9 +130,11 @@ function handleError() {
 }
 
 function showLoader() {
-  preload.classList.remove('is-hidden');
+  const loader = document.querySelector('.loader');
+  loader.classList.remove('is-hidden');
 }
 
 function hideLoader() {
-  preload.classList.add('is-hidden');
+  const loader = document.querySelector('.loader');
+  loader.classList.add('is-hidden');
 }
