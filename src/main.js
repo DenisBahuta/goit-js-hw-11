@@ -45,6 +45,7 @@ function handleSearch(event) {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: 'true',
+    per_page: 9,
   });
 
   fetchImages(searchParams)
