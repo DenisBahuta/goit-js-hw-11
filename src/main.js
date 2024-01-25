@@ -72,7 +72,7 @@ function handleSearch(event) {
     })
     .finally(() => {
       hideLoader();
-      event.currentTarget.reset();
+      // event.currentTarget.reset();
     });
 }
 
