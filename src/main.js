@@ -7,7 +7,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const formSearch = document.querySelector('.form');
 const imageList = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
-const preload = document.querySelector('.preload');
+// const preload = document.querySelector('.preload');
 
 const gallery = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -35,7 +35,7 @@ function handleSearch(event) {
     });
     return;
   }
-  preload.classList.remove('is-hidden');
+  // preload.classList.remove('is-hidden');
 
   showLoader();
 
